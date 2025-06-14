@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,10 +26,6 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('public.home') }}">
-                <img src="{{ asset('images/logo.png') }}" height="40" alt="Barangay Lumanglipa Logo">
-            </a>
-            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -66,21 +63,24 @@
         </div>
     </nav>
     
-    <!-- Republic Header with Time -->
+ 
+<!-- Republic Header with Time -->
     <div class="blue-header">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="d-flex align-items-center">
-                        <img src="{{ asset('images/logo.png') }}" alt="Barangay Logo" class="logo-small me-3">
+                    <div class="d-flex align-items-center" style="margin-left: -200px;">
+                        <img src="{{ asset('images/logo.png') }}" alt="Barangay Logo" class="me-3" style="height: 80px; width: auto;">
                         <div>
-                            <div class="republic-text">Republic of the Philippines</div>
-                            <div class="barangay-title">Barangay Lumanglipa</div>
+                            <a href="{{ route('public.home') }}" class="text-decoration-none text-white">
+                                <div class="republic-text">Republic of the Philippines</div>
+                                <div class="barangay-title">Barangay Lumanglipa</div>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 text-end">
-                    <div class="time-display">
+                    <div class="time-display" style="margin-right: -200px;">
                         <div>Philippine Standard Time</div>
                         <div class="current-time" id="philippineTime"></div>
                         <div id="currentDate"></div>

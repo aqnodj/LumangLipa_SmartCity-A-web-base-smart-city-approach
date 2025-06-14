@@ -1,26 +1,48 @@
+
 @extends('layouts.public.master')
 
 @section('title', 'Barangay Lumanglipa - Official Website')
 
 @section('content')
-<!-- Hero Section with Gradient Background -->
-<section class="hero-section">
-    <div class="container">
+<!-- Hero Section with Transitioning Background -->
+<section class="hero-section" style="position: relative; overflow: hidden;">
+    <div class="background-slider" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;">
+        <div class="bg-slide active" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('images/lumalipabg.jpeg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 1; transition: opacity 2s ease-in-out;"></div>
+        <div class="bg-slide" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('{{ asset('images/lumalipabg2.jpeg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0; transition: opacity 2s ease-in-out;"></div>
+    </div>
+    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 1;"></div>
+    <div class="container" style="position: relative; z-index: 2;">
         <div class="row align-items-center">
             <div class="col-lg-6 fade-in">
-                <h1 class="display-4 fw-bold mb-4">Welcome to Barangay Lumanglipa</h1>
-                <p class="lead mb-4">Your community, your government. We're committed to providing excellent services to all our residents.</p>
+                <h1 class="display-4 fw-bold mb-4 text-white">Welcome to Barangay Lumanglipa</h1>
+                <p class="lead mb-4 text-white">Your community, your government. We're committed to providing excellent services to all our residents.</p>
                 <div class="d-flex gap-3">
                     <a href="{{ route('public.services') }}" class="btn btn-light">Our eServices</a>
                     <a href="{{ route('public.contact') }}" class="btn btn-outline-light">Contact Us</a>
                 </div>
             </div>
             <div class="col-lg-6 text-center fade-in">
-                <img src="{{ asset('images/barangay-hero.jpg') }}" alt="Barangay Lumanglipa" class="img-fluid rounded shadow-lg">
+                <!-- Background images are now transitioning automatically -->
             </div>
         </div>
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.bg-slide');
+    let currentSlide = 0;
+    
+    function nextSlide() {
+        slides[currentSlide].style.opacity = '0';
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].style.opacity = '1';
+    }
+    
+    // Change background every 5 seconds
+    setInterval(nextSlide, 5000);
+});
+</script>
 
 <!-- Features Section -->
 <section class="py-5 mt-5">
